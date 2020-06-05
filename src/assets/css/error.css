@@ -1,0 +1,31 @@
+.error-wrapper {
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+  background-image: url("../images/home-header-bg.svg");
+}
+.error {
+  display: flex;
+  width: 400px;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+  margin: 0px auto;
+}
+.error span {
+  font-size: 18px;
+}
+.error-photo {
+  width: 125px;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 700px) {
+  .error {
+    width: 90%;
+    border: none;
+    margin: 30px auto;
+  }
+}

@@ -1,0 +1,36 @@
+.login-wrapper {
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+  background-image: url("../images/home-header-bg.svg");
+}
+.login-logo {
+  width: 300px;
+  text-align: center;
+  margin: 0px auto;
+}
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  width: 500px;
+  margin: 30px auto;
+  padding: 5px 25px;
+}
+.login-container p {
+  font-size: 12px;
+  margin-top: 20px;
+  text-align: center; 
+}
+
+@media only screen and (max-width: 700px) {
+  .login-container {
+    width: 80%;
+    border: none;
+    margin: 0px auto;
+    padding: 5px 25px;
+  }
+}
