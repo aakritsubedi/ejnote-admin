@@ -17,4 +17,5 @@ export default {
 @import 'assets/css/style.css';
 @import 'assets/css/dashboard.css';
 @import 'assets/css/error.css';
+@import 'assets/css/top-nav.css';
 </style>

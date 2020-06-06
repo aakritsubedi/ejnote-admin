@@ -9,8 +9,8 @@ const getters = {
 const actions = {
   getUserInfo: ({ commit }) => { 
     const user = localStorage.getItem('users');
-    commit('setUsers', JSON.parse(user))
-  }
+    commit('setUsers', JSON.parse(user));
+  },
 };
 
 const mutations = {

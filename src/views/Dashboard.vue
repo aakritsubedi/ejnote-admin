@@ -7,31 +7,12 @@
         </span>
       </div>
       <ul class="menu">
-        <li @click="() => setComponent('Search')" :class="component == 'Search' ? 'active':''">
-          <i class="fa fa-search"></i>
-          <span class="menu-title">Search</span>
-        </li>
         <li
-          @click="() => setComponent('SemesterMenu')"
-          :class="component == 'SemesterMenu' ? 'active':''"
+          @click="() => setComponent('Statistics')"
+          :class="component == 'Statistics' ? 'active':''"
         >
           <i class="fa fa-dashboard"></i>
           <span class="menu-title">Dashboard</span>
-        </li>
-        <!-- <li class="tablet-off">
-          <i class="fa fa-wechat"></i>
-          <span class="menu-title">Discussion</span>
-        </li>-->
-        <li @click="() => setComponent('Syllabus')" :class="component == 'Syllabus' ? 'active':''">
-          <i class="fa fa-book"></i>
-          <span class="menu-title">Syllabus</span>
-        </li>
-        <li
-          @click="() => setComponent('ShareResource')"
-          :class="component == 'ShareResource' ? 'active':''"
-        >
-          <i class="fa fa-share-alt"></i>
-          <span class="menu-title">Share</span>
         </li>
         <li @click="() => setComponent('Profile')" :class="component == 'Profile' ? 'active':''">
           <img :src="users.photo" />
@@ -40,7 +21,7 @@
       </ul>
     </div>
     <div class="display-area container-fluid">
-      <!-- <TopNavigation /> -->
+      <TopNavigation />
       <transition name="component-fade" mode="out-in">
         <component :is="component" class="pb-75"></component>
       </transition>
@@ -57,18 +38,19 @@
 </template>
 
 <script>
-import HelloWorld from "@/components/HelloWorld";
-
+import Statistics from "@/components/Dashboard/Statistics";
+import TopNavigation from "@/components/Navigation/TopNavigation";
 import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "Dashboard",
   components: {
-    HelloWorld
+    TopNavigation,
+    Statistics
   },
   data() {
     return {
-      component: "HelloWorld",
+      component: "Statistics",
       chat: false
     };
   },

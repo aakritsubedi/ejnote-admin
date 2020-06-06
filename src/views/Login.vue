@@ -43,7 +43,11 @@ export default {
         email: userInfo.getEmail()
       };
       const users = await LoginService.login(user);
-      this.$store.commit("setUsers", users);
+      if (users.code && users.code === 401) {
+        throw users;
+      }
+
+      this.$store.commit("setUsers", user);
       router.push("/");
     },
     onFailure() {
@@ -75,5 +79,5 @@ export default {
 </script>
 
 <style>
-  @import "./../assets/css/login.css";
+@import "./../assets/css/login.css";
 </style>

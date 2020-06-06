@@ -7,8 +7,13 @@ class LoginService {
   static async login(users) {
     const loginUser = await axios.post(url, users);
     const { user, jwtToken } = loginUser.data;
+    
     if(!user) {
-      return 'Internal Server Error';
+      const { code, message } = loginUser.data;
+      return {
+        code: code,
+        message: message
+      }
     }
     this.saveToken(user,jwtToken);
 
