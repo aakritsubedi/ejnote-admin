@@ -19,7 +19,7 @@ export default {
   props: ['icon', 'title', 'count', 'subCount'],
   filters: {
     formatNum: function(value) {
-      return value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+      return value ? value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,") : 0;
     }
   }
 };

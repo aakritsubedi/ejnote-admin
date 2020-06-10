@@ -2,20 +2,26 @@
   <div>
     <h2>Staticstics</h2>
     <br />
-    <div class="row">
+    <div class="row statistics">
       <div class="col-md-3">
-        <StatisticsCard icon="fa fa-user" title="Users" :count="statistics.users" />
+        <router-link to="/users">
+          <StatisticsCard icon="fa fa-user" title="Users" :count="statistics.users" />
+        </router-link>
       </div>
       <div class="col-md-6">
-        <StatisticsCard
-          icon="fa fa-book"
-          title="Study Materials"
-          :subCount="statistics.study_materials_links"
-          :count="statistics.study_materials"
-        />
+        <router-link to="/study-materials">
+          <StatisticsCard
+            icon="fa fa-book"
+            title="Study Materials"
+            :subCount="statistics.study_materials_links"
+            :count="statistics.study_materials"
+          />
+        </router-link>
       </div>
       <div class="col-md-3">
-        <StatisticsCard icon="fa fa-eye" title="Views" :count="statistics.view_counts" />
+        <router-link to="/views">
+          <StatisticsCard icon="fa fa-eye" title="Views" :count="statistics.view_counts" />
+        </router-link>
       </div>
     </div>
   </div>
