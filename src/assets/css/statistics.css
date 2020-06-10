@@ -1,0 +1,7 @@
+.statistics a {
+  color: inherit;
+}
+
+.statistics a:hover {
+  text-decoration: none;
+}
