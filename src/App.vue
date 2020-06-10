@@ -18,4 +18,6 @@ export default {
 @import 'assets/css/dashboard.css';
 @import 'assets/css/error.css';
 @import 'assets/css/top-nav.css';
+@import 'assets/css/statistics.css';
+@import 'assets/css/timeline.css';
 </style>
