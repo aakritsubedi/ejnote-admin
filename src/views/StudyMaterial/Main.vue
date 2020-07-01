@@ -48,9 +48,10 @@
         <template v-slot:cell(Options)="data">
           <router-link :to="{ name: 'viewStudyMaterial', params: { id: data.item.id }}">
             <i class="fa fa-eye"></i>
-          </router-link>|
-          <i class="fa fa-edit"></i> |
-          <i class="fa fa-trash"></i>
+          </router-link> |
+          <router-link :to="{ name: 'editStudyMaterial', params: { id: data.item.id }}">
+            <i class="fa fa-edit"></i>
+          </router-link> 
         </template>
       </b-table>
       <b-pagination

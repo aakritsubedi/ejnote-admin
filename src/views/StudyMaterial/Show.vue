@@ -2,7 +2,7 @@
   <div>
     <TopNavigation />
     <MainNavigation />
-    <div class="container-fluid">
+    <div class="container-fluid mb-4">
       <br>
       <div class="ribbon-wrapper">
         <div class="glow">&nbsp;</div>
@@ -12,7 +12,11 @@
         <div class="ribbon-edge-bottomleft"></div>
         <div class="ribbon-edge-bottomright"></div>
       </div>
-      <span class="float-right xl">{{materialById.created_at}}</span>
+      <div class="uploader">
+        <span class="upload-time">{{materialById.created_at}}</span>
+        <img :src="materialById.photo" :alt="materialById.first_name">
+        <span class="upload-name">{{materialById.first_name}} {{materialById.last_name}}</span>
+      </div>
       <br>
       <h3>Subject Code: {{materialById.subject_code}} <br/><br/> {{materialById.title}}</h3>
       <p style="text-indent: 50px;">{{materialById.description}}</p>
@@ -32,8 +36,8 @@
             </td>
           </tr>
         </table>
-        <button class="btn btn-success">Approve</button>
-        <button class="btn btn-danger">Delete</button>
+        <div class="my-3">Status: {{ materialById.status | status }}</div>
+        <button :class="materialById.status===0 ? `btn btn-lg btn-success` : `btn btn-lg btn-warning`" @click="updateStatus">{{ materialById.status===1 ? 'Draft' : 'Approve' }}</button>
       </div>
       <span v-else>-</span>
     </div>
@@ -47,6 +51,8 @@ import { mapGetters, mapActions } from "vuex";
 
 import { semesterMappings } from "@/constants/semesterMappings";
 
+import StudyMaterialService from "@/Services/StudyMaterials";
+
 export default {
   name: "ShowStudyMaterial",
   components: {
@@ -59,10 +65,14 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["getStudyMaterialById"])
+    ...mapActions(["getStudyMaterialById"]),
+    updateStatus: async function() {  
+      await StudyMaterialService.toggleStatus(this.id);
+      await this.getStudyMaterialById(this.id);
+    }
   },
-  created() {
-    this.getStudyMaterialById(this.id);
+  async created() {
+    await this.getStudyMaterialById(this.id);
   },
   computed: {
     ...mapGetters(["materialById"])
@@ -76,6 +86,9 @@ export default {
     },
     mapSemester: value => {
       return semesterMappings[value] + " semester";
+    },
+    status: value => {
+      return value ? 'Approved' : 'Draft';
     }
   }
 };
