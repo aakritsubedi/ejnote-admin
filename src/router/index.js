@@ -5,6 +5,9 @@ import Login from "@/views/Login";
 import Dashboard from '@/views/Dashboard';
 import Users from '@/views/Users/Main';
 import ViewUser from '@/views/Users/Show';
+import StudyMaterial from '@/views/StudyMaterial/Main';
+import ViewStudyMaterial from '@/views/StudyMaterial/Show';
+import Visitor from '@/views/Visitor/Main';
 import NotFound from '@/views/NotFound';
 
 Vue.use(Router);
@@ -30,8 +33,26 @@ const routes = [
   },
   {
     path: "/users/view/:id",
-    name: "users",
+    name: "viewUser",
     component: ViewUser,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: "/study-materials",
+    name: "studyMaterial",
+    component: StudyMaterial,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: "/study-materials/view/:id",
+    name: "viewStudyMaterial",
+    component: ViewStudyMaterial,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: "/visitors",
+    name: "visitors",
+    component: Visitor,
     meta: { requiresAuth: true }
   },
   {

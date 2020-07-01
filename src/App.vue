@@ -20,4 +20,6 @@ export default {
 @import 'assets/css/top-nav.css';
 @import 'assets/css/statistics.css';
 @import 'assets/css/timeline.css';
+@import 'assets/css/ribbonStyle.css';
+
 </style>

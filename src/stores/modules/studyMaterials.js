@@ -14,10 +14,14 @@ function groupBy(objectArray, property) {
 
 const state = {
   uploaderMaterials: [],
+  allMaterials: [],
+  materialById: []
 };
 
 const getters = {
   uploaderMaterials: (state) => state.uploaderMaterials,
+  allMaterials: (state) => state.allMaterials,
+  materialById: (state) => state.materialById,
 };
 
 const actions = {
@@ -25,13 +29,28 @@ const actions = {
     const studyMaterial = await studyMaterialService.getStudyMaterialByUploader(
       userId
     );
-    
-    commit("setUploaderMaterials", groupBy(studyMaterial.data.message,'semester'));
+
+    commit(
+      "setUploaderMaterials",
+      groupBy(studyMaterial.data.message, "semester")
+    );
+  },
+  getAllStudyMaterial: async ({ commit }) => {
+    const studyMaterial = await studyMaterialService.getAllStudyMaterial();
+
+    commit("setAllMaterials", studyMaterial.data.message);
+  },
+  getStudyMaterialById: async ({ commit }, id) => {
+    const studyMaterial = await studyMaterialService.getStudyMaterialById(id);
+
+    commit("setMaterialById", studyMaterial.data.message[0]);
   },
 };
 
 const mutations = {
   setUploaderMaterials: (state, value) => (state.uploaderMaterials = value),
+  setAllMaterials: (state, value) => (state.allMaterials = value),
+  setMaterialById: (state, value) => (state.materialById = value)
 };
 
 export default {

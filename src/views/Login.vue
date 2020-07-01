@@ -48,7 +48,7 @@ export default {
       }
 
       this.$store.commit("setUsers", user);
-      router.push("/");
+      router.push({ name: 'dashboard'});
     },
     onFailure() {
       this.error.status = true;

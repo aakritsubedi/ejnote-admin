@@ -12,6 +12,28 @@ class StudyMaterialService {
 
     return studyMaterial;
   }
+  
+  static async getAllStudyMaterial() {
+    const studyMaterials = await axios.get(url, {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("jwtToken"),
+      },
+    });
+
+    return studyMaterials;
+  }
+
+  static async getStudyMaterialById(id) {
+    const studyMaterial = await axios.get(url + `/${id}`, {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("jwtToken"),
+      },
+    });
+    console.log(studyMaterial);
+    
+    return studyMaterial;
+  }
+
 }
 
 export default StudyMaterialService;

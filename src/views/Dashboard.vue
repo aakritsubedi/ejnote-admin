@@ -7,12 +7,13 @@
         </span>
       </div>
       <ul class="menu">
-        <li
-          @click="() => setComponent('Statistics')"
-          :class="component == 'Statistics' ? 'active':''"
-        >
+        <li @click="() => setComponent('Statistics')" :class="component == 'Statistics' ? 'active':''">
           <i class="fa fa-dashboard"></i>
           <span class="menu-title">Dashboard</span>
+        </li>
+        <li @click="() => setComponent('WebApp')" :class="component == 'WebApp' ? 'active':''">
+          <i class="fa fa-desktop"></i>
+          <span class="menu-title">Web App</span>
         </li>
         <li @click="() => setComponent('Profile')" :class="component == 'Profile' ? 'active':''">
           <img :src="users.photo" />
@@ -38,15 +39,18 @@
 </template>
 
 <script>
+import WebApp from "@/components/Dashboard/WebApp";
 import Statistics from "@/components/Dashboard/Statistics";
 import TopNavigation from "@/components/Navigation/TopNavigation";
+
 import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "Dashboard",
   components: {
     TopNavigation,
-    Statistics
+    Statistics,
+    WebApp
   },
   data() {
     return {

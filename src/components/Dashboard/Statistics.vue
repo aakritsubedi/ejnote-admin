@@ -19,7 +19,7 @@
         </router-link>
       </div>
       <div class="col-md-3">
-        <router-link to="/views">
+        <router-link to="/visitors">
           <StatisticsCard icon="fa fa-eye" title="Views" :count="statistics.view_counts" />
         </router-link>
       </div>

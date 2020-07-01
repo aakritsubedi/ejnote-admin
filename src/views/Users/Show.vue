@@ -2,7 +2,6 @@
   <div>
     <TopNavigation />
     <MainNavigation />
-
     <div class="container-fluid profile-body">
       <div class="row mt-4">
         <div class="col-md-3">
@@ -42,7 +41,6 @@ export default {
   created() {
     this.getUserById(this.id);
     this.getUploaderMaterials(this.id);
-    // console.log(this.uploaderMaterials);
   },
   computed: {
     ...mapGetters(["userById", "uploaderMaterials"])

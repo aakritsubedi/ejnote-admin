@@ -2,10 +2,12 @@ import adminService from "@/Services/Admin";
 
 const state = {
   statistics: {},
+  visitorCount: 0
 };
 
 const getters = {
   statistics: (state) => state.statistics,
+  visitorCount: (state) => state.visitorCount,
 };
 
 const actions = {
@@ -19,10 +21,17 @@ const actions = {
 
     commit("setStatistics", stat);
   },
+
+  getVisitorCount: async ({ commit }) => {
+    const visitorCount = await adminService.getViewCount();
+    
+    commit("setVisitorCount", visitorCount.counts);
+  }
 };
 
 const mutations = {
   setStatistics: (state, value) => (state.statistics = value),
+  setVisitorCount: (state, value) => (state.visitorCount = value),
 };
 
 export default {
