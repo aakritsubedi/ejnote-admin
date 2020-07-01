@@ -36,7 +36,8 @@
           <span v-else class="btn btn-sm btn-warning">Student</span>
         </template>
         <template v-slot:cell(Options)="data">
-          <router-link :to="`/users/view/${data.item.id}`"><i class="fa fa-eye"></i></router-link> | 
+          
+          <router-link :to="{ name: 'viewUser', params: { id: data.item.id }}"><i class="fa fa-eye"></i></router-link> | 
           <i class="fa fa-edit"></i> |
           <i class="fa fa-trash"></i>
         </template>

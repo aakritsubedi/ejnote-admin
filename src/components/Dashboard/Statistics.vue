@@ -4,12 +4,12 @@
     <br />
     <div class="row statistics">
       <div class="col-md-3">
-        <router-link to="/users">
+        <router-link :to="{ name: 'users'}">
           <StatisticsCard icon="fa fa-user" title="Users" :count="statistics.users" />
         </router-link>
       </div>
       <div class="col-md-6">
-        <router-link to="/study-materials">
+        <router-link :to="{ name: 'studyMaterial'}">
           <StatisticsCard
             icon="fa fa-book"
             title="Study Materials"
@@ -19,7 +19,7 @@
         </router-link>
       </div>
       <div class="col-md-3">
-        <router-link to="/visitors">
+        <router-link :to="{ name: 'visitors'}">
           <StatisticsCard icon="fa fa-eye" title="Views" :count="statistics.view_counts" />
         </router-link>
       </div>

@@ -14,43 +14,43 @@ Vue.use(Router);
 
 const routes = [
   {
-    path: "/login",
+    path: "/admin/login",
     name: "Login",
     component: Login,
     meta: { requiresAuth: false }
   },
   {
-    path: "/",
+    path: "/admin",
     name: "dashboard",
     component: Dashboard,
     meta: { requiresAuth: true }
   },
   {
-    path: "/users",
+    path: "/admin/users",
     name: "users",
     component: Users  ,
     meta: { requiresAuth: true }
   },
   {
-    path: "/users/view/:id",
+    path: "/admin/users/view/:id",
     name: "viewUser",
     component: ViewUser,
     meta: { requiresAuth: true }
   },
   {
-    path: "/study-materials",
+    path: "/admin/study-materials",
     name: "studyMaterial",
     component: StudyMaterial,
     meta: { requiresAuth: true }
   },
   {
-    path: "/study-materials/view/:id",
+    path: "/admin/study-materials/view/:id",
     name: "viewStudyMaterial",
     component: ViewStudyMaterial,
     meta: { requiresAuth: true }
   },
   {
-    path: "/visitors",
+    path: "/admin/visitors",
     name: "visitors",
     component: Visitor,
     meta: { requiresAuth: true }

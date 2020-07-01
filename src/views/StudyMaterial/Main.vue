@@ -46,7 +46,7 @@
           <span v-else> - </span>
         </template>
         <template v-slot:cell(Options)="data">
-          <router-link :to="`/study-materials/view/${data.item.id}`">
+          <router-link :to="{ name: 'viewStudyMaterial', params: { id: data.item.id }}">
             <i class="fa fa-eye"></i>
           </router-link>|
           <i class="fa fa-edit"></i> |
