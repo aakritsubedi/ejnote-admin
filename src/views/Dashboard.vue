@@ -41,6 +41,7 @@
 <script>
 import WebApp from "@/components/Dashboard/WebApp";
 import Statistics from "@/components/Dashboard/Statistics";
+import Profile from "@/components/Dashboard/Profile";
 import TopNavigation from "@/components/Navigation/TopNavigation";
 
 import { mapGetters, mapActions } from "vuex";
@@ -50,6 +51,7 @@ export default {
   components: {
     TopNavigation,
     Statistics,
+    Profile,
     WebApp
   },
   data() {
