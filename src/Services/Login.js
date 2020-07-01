@@ -27,7 +27,7 @@ class LoginService {
 
   static logout(){
     localStorage.clear();
-    router.push('login');
+    router.push({ name: 'login' });
   }
 }
 

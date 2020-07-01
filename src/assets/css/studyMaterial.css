@@ -1,0 +1,13 @@
+.uploader {
+  float: right;
+}
+
+.uploader img {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+}
+
+.uploader .upload-time {
+  display: block;
+}

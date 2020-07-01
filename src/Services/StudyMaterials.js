@@ -24,16 +24,24 @@ class StudyMaterialService {
   }
 
   static async getStudyMaterialById(id) {
-    const studyMaterial = await axios.get(url + `/${id}`, {
+    const studyMaterial = await axios.get(url + `/book/${id}`, {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwtToken"),
       },
     });
-    console.log(studyMaterial);
-    
+  
     return studyMaterial;
   }
 
+  static async toggleStatus(id) {
+    const studyMaterial = await axios.get(url + `/book/status/${id}`, {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("jwtToken"),
+      },
+    });
+  
+    return studyMaterial;
+  }
 }
 
 export default StudyMaterialService;

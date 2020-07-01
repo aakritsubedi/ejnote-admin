@@ -4,7 +4,7 @@
       image="not-found.svg"
       code="404"
       title="Page Not Found"
-      link="/"
+      link="/admin"
       linkTitle="Dashboard"
     />
   </div>

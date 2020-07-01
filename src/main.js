@@ -14,7 +14,7 @@ Vue.config.productionTip = false;
 Vue.config.errorHandler = function(err, vm, info) {
   console.log(err, vm, info);
 
-  router.push("/error");
+  router.push({ name: 'error' });
 };
 Vue.config.warnHandler = function(msg, vm, info) {
   console.log(msg, vm, info);

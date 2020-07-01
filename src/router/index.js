@@ -7,6 +7,7 @@ import Users from '@/views/Users/Main';
 import ViewUser from '@/views/Users/Show';
 import StudyMaterial from '@/views/StudyMaterial/Main';
 import ViewStudyMaterial from '@/views/StudyMaterial/Show';
+import EditStudyMaterial from '@/views/StudyMaterial/Edit';
 import Visitor from '@/views/Visitor/Main';
 import NotFound from '@/views/NotFound';
 
@@ -15,7 +16,7 @@ Vue.use(Router);
 const routes = [
   {
     path: "/admin/login",
-    name: "Login",
+    name: "login",
     component: Login,
     meta: { requiresAuth: false }
   },
@@ -50,10 +51,21 @@ const routes = [
     meta: { requiresAuth: true }
   },
   {
+    path: "/admin/study-materials/edit/:id",
+    name: "editStudyMaterial",
+    component: EditStudyMaterial,
+    meta: { requiresAuth: true }
+  },
+  {
     path: "/admin/visitors",
     name: "visitors",
     component: Visitor,
     meta: { requiresAuth: true }
+  },
+  {
+    path: "/admin/error",
+    name: "error",
+    component: NotFound
   },
   {
     path: "*",
@@ -70,9 +82,11 @@ const router = new Router({
 
 router.beforeEach((to, from, next) => {
   let isRequireAuth =  to.matched.some(record => record.meta.requiresAuth);
-  
-  let isAuthenticated = true;
-  if (isRequireAuth && !isAuthenticated) next({ name: 'Login' })
+  const now = Math.ceil(new Date().getTime() / 1000);
+  const exp = Number(localStorage.getItem("exp"));
+
+  let isAuthenticated = exp >= now ? true : false;
+  if (isRequireAuth && isAuthenticated) next({ name: 'login' })
   else next()
 })
 

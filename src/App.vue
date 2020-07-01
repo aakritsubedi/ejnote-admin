@@ -12,8 +12,6 @@ export default {
 </script>
 
 <style>
-@import url('https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css');
-@import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 @import 'assets/css/style.css';
 @import 'assets/css/dashboard.css';
 @import 'assets/css/error.css';
@@ -21,5 +19,6 @@ export default {
 @import 'assets/css/statistics.css';
 @import 'assets/css/timeline.css';
 @import 'assets/css/ribbonStyle.css';
+@import 'assets/css/studyMaterial.css';
 
 </style>
