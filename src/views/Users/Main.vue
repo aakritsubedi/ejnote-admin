@@ -73,6 +73,8 @@ export default {
         { key: "name", sortable: true },
         { key: "email", sortable: true },
         { key: "status", sortable: false, tdClass: "text-center" },
+        { key: "login_count", sortable: true, tdClass: "text-center"},
+        { key: "updated_at", label: 'Last Login', sortable: false, tdClass: "text-center", formatter: this.formatDate },
         { key: "isAdmin", sortable: false, label: "User Type" },
         { key: "created_at", sortable: false, formatter: this.formatDate },
         { key: "Options" }

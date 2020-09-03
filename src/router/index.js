@@ -85,9 +85,8 @@ router.beforeEach((to, from, next) => {
   const now = Math.ceil(new Date().getTime() / 1000);
   const exp = Number(localStorage.getItem("exp"));  
   const isAdmin = localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')).isAdmin : 0;
-  
   const isAuthenticated = (exp - now > 0) ? true : false;
-  console.log(isRequireAuth, isAuthenticated, isAdmin, exp - now);
+  
   if (isRequireAuth && isAuthenticated && !isAdmin) next({ name: 'login' })
   else next()
 })
