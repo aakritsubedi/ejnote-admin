@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="recentlyJoinedUsers.length">
     <h2>Staticstics</h2>
     <div class="row statistics">
       <div class="col-md-4">
@@ -44,12 +44,16 @@
       <ul class="highlights-student">
         <span>- </span>
         <li v-for="sm in recentlyUploadedSM" :key="sm.id">{{ sm.title }},   </li>
-        <span>joined uploaded.</span>
+        <span>recently uploaded.</span>
       </ul>
       <ul class="highlights-student">
         <span>- </span>
         <li v-for="user in recentlyLoggedInUsers" :key="user.id">{{ user.first_name }},   </li>
         <span>recently logged in.</span>
+      </ul>
+      <ul class="highlights-student">
+        <span>- </span>
+        <li>{{ recentlyLoggedInUsers.length }} unique visitor in last 12hrs.</li> 
       </ul>
     </div>
     <hr>
@@ -93,7 +97,7 @@ export default {
           recentData.push(data);
         }
       });
-      return recentData;
+      return recentData.reverse();
     },
     getUserInfo(id){
       return this.allUsers.filter(user => user.id === id)[0];

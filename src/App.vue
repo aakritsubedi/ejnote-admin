@@ -13,6 +13,7 @@ export default {
 
 <style>
 @import 'assets/css/style.css';
+@import 'assets/css/aboutus.css';
 @import 'assets/css/dashboard.css';
 @import 'assets/css/profile.css';
 @import 'assets/css/error.css';

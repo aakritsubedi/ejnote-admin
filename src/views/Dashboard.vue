@@ -42,6 +42,7 @@
 </template>
 
 <script>
+import AboutUs from "@/components/Dashboard/AboutUs";
 import WebApp from "@/components/Dashboard/WebApp";
 import Statistics from "@/components/Dashboard/Statistics";
 import Profile from "@/components/Dashboard/Profile";
@@ -56,6 +57,7 @@ export default {
     Statistics,
     Profile,
     WebApp,
+    AboutUs
   },
   data() {
     return {
