@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
+import jwtDecode from "jwt-decode";
 
 import Login from "@/views/Login";
 import Dashboard from '@/views/Dashboard';
@@ -81,14 +82,16 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
+  var token = jwtDecode(localStorage.getItem("jwtToken"));
+  
   let isRequireAuth =  to.matched.some(record => record.meta.requiresAuth);
   const now = Math.ceil(new Date().getTime() / 1000);
-  const exp = Number(localStorage.getItem("exp"));  
-  const isAdmin = localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')).isAdmin : 0;
-  const isAuthenticated = (exp - now > 0) ? true : false;
-  
-  if (isRequireAuth && isAuthenticated && !isAdmin) next({ name: 'login' })
-  else next()
+  const exp = Number(token.exp);  
+  const isAdmin = token.role === 'admin' ? true : false;
+  const isExpired = (exp - now < 0) ? true : false;
+
+  if (isRequireAuth && (isExpired || !isAdmin)) next({ name: 'login' })
+  else next( )
 })
 
 

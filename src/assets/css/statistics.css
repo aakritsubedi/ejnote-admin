@@ -5,3 +5,15 @@
 .statistics a:hover {
   text-decoration: none;
 }
+
+/* Highlights */
+.highlights {
+
+}
+.highlights-student li{
+  display: inline;
+  list-style-type: none;
+  font-size: 14px;
+  color: #121212;
+  text-transform: capitalize;
+}
