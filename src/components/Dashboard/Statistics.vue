@@ -36,27 +36,36 @@
     <div class="highlights">
       <ul class="highlights-student">
         <span>- </span>
-        <li v-for="user in recentlyJoinedUsers" :key="user.id">
-          {{ user.first_name }},
+        <li v-for="(user, index) in recentlyJoinedUsers" :key="user.id">
+          {{ user.first_name }}
+          <span v-if="index + 1 != recentlyJoinedUsers.length">,</span>
         </li>
         <span>joined recently.</span>
       </ul>
       <ul class="highlights-student">
         <span>- </span>
-        <li v-for="sm in recentlyUploadedSM" :key="sm.id">{{ sm.title }},   </li>
+        <li v-for="(sm, index) in recentlyUploadedSM" :key="sm.id">
+          {{ sm.title }}
+          <span v-if="index + 1 != recentlyUploadedSM.length">,</span>
+        </li>
         <span>recently uploaded.</span>
       </ul>
       <ul class="highlights-student">
         <span>- </span>
-        <li v-for="user in recentlyLoggedInUsers" :key="user.id">{{ user.first_name }},   </li>
+        <li v-for="(user, index) in recentlyLoggedInUsers" :key="user.id">
+          {{ user.first_name }}
+          <span v-if="index + 1 != recentlyLoggedInUsers.length">,</span>
+        </li>
         <span>recently logged in.</span>
       </ul>
       <ul class="highlights-student">
         <span>- </span>
-        <li>{{ recentlyLoggedInUsers.length }} unique visitor in last 12hrs.</li> 
+        <li>
+          {{ recentlyLoggedInUsers.length }} unique visitor in last 12hrs.
+        </li>
       </ul>
     </div>
-    <hr>
+    <hr />
   </div>
 </template>
 
@@ -97,15 +106,32 @@ export default {
           recentData.push(data);
         }
       });
-      return recentData.reverse();
+
+      if (recentData.length !== 0) {
+        return recentData.reverse();
+      } else {
+        return datas.splice(-3);
+      }
     },
-    getUserInfo(id){
-      return this.allUsers.filter(user => user.id === id)[0];
+    getUserInfo(id) {
+      return this.allUsers.filter((user) => user.id === id)[0];
     },
     newlyJoined() {
-      this.recentlyJoinedUsers = this.lastNSecondData(this.allUsers, 'created_at', 86400);
-      this.recentlyLoggedInUsers = this.lastNSecondData(this.allUsers, 'updated_at', 43200);
-      this.recentlyUploadedSM = this.lastNSecondData(this.allMaterials, 'created_at', 86400);
+      this.recentlyJoinedUsers = this.lastNSecondData(
+        this.allUsers,
+        "created_at",
+        86400
+      );
+      this.recentlyLoggedInUsers = this.lastNSecondData(
+        this.allUsers,
+        "updated_at",
+        43200
+      );
+      this.recentlyUploadedSM = this.lastNSecondData(
+        this.allMaterials,
+        "created_at",
+        86400
+      );
     },
   },
 };
